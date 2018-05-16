@@ -9,17 +9,17 @@ pipeline {
                 sh 'ls'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                echo 'Installing Dependencies'
-                sh 'npm install'
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                echo 'Running Test'
-                sh './jenkins/scripts/test.sh'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         echo 'Installing Dependencies'
+        //         sh 'npm install'
+        //     }
+        // }
+        // stage('Run Tests') {
+        //     steps {
+        //         echo 'Running Test'
+        //         sh './jenkins/scripts/test.sh'
+        //     }
+        // }
     }
 }
