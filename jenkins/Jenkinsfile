@@ -6,7 +6,21 @@ pipeline {
         stage('Check Repo Exist State') {
             steps {
                 echo 'Check Repo'
-                sh 'ls'
+                sh 'ls && pwd'
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                echo 'Cleaning Up'
+                sh 'sudo rm -r *'
+            }
+        }
+
+        stage('Check Repo Exist State 2') {
+            steps {
+                echo 'Check Repo 2'
+                sh 'ls && pwd'
             }
         }
         // stage('Install Dependencies') {
