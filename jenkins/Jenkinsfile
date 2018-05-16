@@ -6,13 +6,13 @@ pipeline {
         stage('Check Repo Exist State') {
             steps {
                 echo 'Check Repo'
-                sh ls
+                sh 'ls'
             }
         }
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Dependencies'
-                npm install
+                sh 'npm install'
             }
         }
         stage('Run Tests') {
