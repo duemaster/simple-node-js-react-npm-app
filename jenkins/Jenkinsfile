@@ -1,10 +1,25 @@
+#!/usr/bin/env groovy
+
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Check Repo Exist State') {
             steps {
-                echo 'Hello world!' 
+                echo('Check Repo')
+                ls
             }
-        }
+        },
+        stage('Install Dependencies') {
+            steps {
+                echo('Installing Dependencies')
+                npm install
+            }
+        },
+        stage('Run Tests') {
+            steps {
+                echo('Running Test')
+                npm test
+            }
+        },
     }
 }
