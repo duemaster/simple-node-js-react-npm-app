@@ -13,7 +13,7 @@ pipeline {
         stage('Clean Up') {
             steps {
                 echo 'Cleaning Up'
-                sh 'sudo rm -r *'
+                sh 'rm -r *'
             }
         }
 
