@@ -1,7 +1,25 @@
-FROM jenkinsci/blueocean:1.5.0
+# FROM jenkinsci/blueocean:1.5.0
+FROM ubuntu:16.04
 
-USER root
+# Install Utilities
+RUN apt-get update && apt-get install -y curl wget sudo
 
-RUN apk add --update nodejs && apk add nodejs-npm
+# Install Node
+# RUN apk add --update nodejs && apk add nodejs-npm
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
+RUN npm install -g npm@latest
+# RUN apt-get install -y npm
+
+# RUN apk add --update \
+#     python \
+#     python-dev \
+#     py-pip \
+#     build-base \
+#   && pip install virtualenv \
+#   && rm -rf /var/cache/apk/*
+
+# RUN npm install -g composer-cli
 
 EXPOSE 8080
