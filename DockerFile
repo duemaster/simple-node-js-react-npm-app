@@ -1,25 +1,42 @@
-# FROM jenkinsci/blueocean:1.5.0
-FROM ubuntu:16.04
+FROM jenkinsci/blueocean:1.5.0
+# FROM ubuntu:16.04
+# FROM jenkins/jenkins:lts
 
 # Install Utilities
-RUN apt-get update && apt-get install -y curl wget sudo
+# RUN apt-get update && apt-get install -y sudo && sudo apt-get install -y curl wget default-jdk-headless
+
+USER root
 
 # Install Node
-# RUN apk add --update nodejs && apk add nodejs-npm
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN sudo apt-get install -y nodejs
-
-RUN npm install -g npm@latest
+RUN apk add --update nodejs && apk add nodejs-npm
+# RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+# RUN sudo apt-get install -y nodejs
+# RUN npm install -g npm@latest
 # RUN apt-get install -y npm
 
-# RUN apk add --update \
-#     python \
-#     python-dev \
-#     py-pip \
-#     build-base \
-#   && pip install virtualenv \
-#   && rm -rf /var/cache/apk/*
+RUN apk add --update \
+    python \
+    python-dev \
+    py-pip \
+    build-base \
+  && pip install virtualenv \
+  && rm -rf /var/cache/apk/*
 
+
+# USER node
 # RUN npm install -g composer-cli
 
-EXPOSE 8080
+# WORKDIR /home
+
+# Install Jenkins
+# COPY jenkins/jenkins.war /jenkins/jenkins.war
+# RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+# RUN echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+# RUN apt-get update
+# RUN sudo apt-get install jenkins
+
+# Start Jenkins
+# ENTRYPOINT ["java -jar /jenkins/jenkins.war"]
+
+
+# EXPOSE 8080
